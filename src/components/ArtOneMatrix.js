@@ -27,7 +27,7 @@ export class ArtOneMatrix extends React.Component {
     infoClicked: false,
   }
   componentDidMount() {
-    d3.select("svg").attr("width", 800).attr("height", 300)
+    d3.select("svg").attr("width", 1000).attr("height", 600)
 
     const scoreObj = function (o) {
       let score = 0
@@ -115,7 +115,7 @@ export class ArtOneMatrix extends React.Component {
     svg
       .append("g")
       .attr("class", "legend")
-      .attr("transform", "translate(0,170)")
+      .attr("transform", "translate(5,230)")
 
     this.drawLegendItem(
       0,
@@ -187,20 +187,22 @@ export class ArtOneMatrix extends React.Component {
         const x = this.getY2Coordinate(i, dotsPerCol, iconWidth) + xoffset
         const yoffset = d.HOGAlwaysMan ? 1 : 0
         const y = this.getX2Coordinate(i, dotsPerCol, iconHeight) + yoffset
-        const scale = d.HOGAlwaysMan ? "0.035, 0.045" : "0.22, 0.25"
+        // const scale = d.HOGAlwaysMan ? "0.035, 0.045" : "0.22, 0.25"
+        const scale = d.HOGAlwaysMan ? "0.055, 0.065" : "0.32, 0.35"
+
         return `translate(${x}, ${y}) scale(${scale})`
       })
   }
 
   getY2Coordinate = (index, dotsPerCol, radius) => {
     const placeInCol = Math.floor(index / dotsPerCol)
-    const padding = 5
+    const padding = 15
     return placeInCol * (padding + radius * 2)
   }
 
   getX2Coordinate = (index, dotsPerCol, radius) => {
     const placeInRow = index % dotsPerCol
-    const padding = 5
+    const padding = 15
     return placeInRow * (radius * 2 + padding)
   }
   render() {
@@ -253,13 +255,13 @@ const Container = styled.div`
 `
 const PositionedSvg = styled.svg`
   position: absolute;
-  right: 50px;
+  left: 150px;
 `
 const PositionedInfoBox = styled.div`
   position: absolute;
-  right: 50px;
+  left: 1180px;
   border: 1px solid rgba(255, 127, 80, 0.4);
-  min-height: 140px;
+  min-height: 190px;
   width: 200px;
   padding: 20px;
   box-sizing: border-box;
