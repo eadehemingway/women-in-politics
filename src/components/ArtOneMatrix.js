@@ -27,7 +27,7 @@ export class ArtOneMatrix extends React.Component {
     infoClicked: false,
   }
   componentDidMount() {
-    d3.select("svg").attr("width", 1000).attr("height", 600)
+    d3.select("svg").attr("width", 1000).attr("height", 400)
 
     const scoreObj = function (o) {
       let score = 0
@@ -210,29 +210,29 @@ export class ArtOneMatrix extends React.Component {
 
     return (
       <Container id="viz-div">
-        <div>
-          <PStyled>
-            Countries and female representation in the highest position of
-            executive power.
-          </PStyled>
-          <PositionedSvg id="leaders-people" />
-        </div>
-        <PositionedInfoBox>
-          {info.country && (
-            <div>
-              <CountryName>{info.country}</CountryName>
-              {info.femaleLeaders.length > 0 &&
-                info.femaleLeaders.map((l, i) => (
-                  <PStyled key={i}>{l.name}</PStyled>
-                ))}
-              <PStyled>total time female leader:</PStyled>
+        <PStyled style={{ paddingLeft: 10 }}>
+          Female representation in the highest position of executive power in un
+          member states.
+        </PStyled>
+        <Flex>
+          <svg id="leaders-people" />
+          <PositionedInfoBox>
+            {info.country && (
+              <div>
+                <CountryName>{info.country}</CountryName>
+                {info.femaleLeaders.length > 0 &&
+                  info.femaleLeaders.map((l, i) => (
+                    <PStyled key={i}>{l.name}</PStyled>
+                  ))}
+                <PStyled>total time female leader:</PStyled>
 
-              <PStyledSienna>
-                {info.yearsHogWoman} years and {info.daysHogWoman} days
-              </PStyledSienna>
-            </div>
-          )}
-        </PositionedInfoBox>
+                <PStyledSienna>
+                  {info.yearsHogWoman} years and {info.daysHogWoman} days
+                </PStyledSienna>
+              </div>
+            )}
+          </PositionedInfoBox>
+        </Flex>
       </Container>
     )
   }
@@ -259,13 +259,16 @@ const Container = styled.div`
   padding-top: 140px;
   height: 400px;
   padding-left: 150px;
-  display: flex;
 `
-const PositionedSvg = styled.svg``
+
 const PositionedInfoBox = styled.div`
   border: 1px solid rgba(255, 127, 80, 0.4);
   min-height: 190px;
   width: 200px;
   padding: 20px;
   box-sizing: border-box;
+  height: fit-content;
+`
+const Flex = styled.div`
+  display: flex;
 `
