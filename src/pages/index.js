@@ -1,100 +1,35 @@
-import React, { useState } from "react"
+import React from "react"
 
-import styled from "styled-components"
-import { useEffect } from "react"
-import { Line } from "../components/Line"
+import { ArtOneMatrix } from "../components/ArtOneMatrix"
+import { ArtOneMap } from "../components/ArtOneMap"
 import "../index.css"
+import styled from "styled-components"
 
-const IndexPage = () => {
-  const [lines, setLines] = useState()
-  const [linesArr, setLinesArr] = useState([])
-
-  function handleInputChange(e) {
-    const numLines = Number(e.target.value)
-
-    setLines(numLines)
+export default class ArticleOne extends React.Component {
+  render() {
+    return (
+      <Container>
+        <ArticleTitle>Female Political Represtentation Worldwide</ArticleTitle>
+        <ArtOneMatrix />
+        <ArtOneMap />
+      </Container>
+    )
   }
-  useEffect(() => {
-    if (!lines) return
-    const arr = new Array(lines).fill("")
-
-    setLinesArr(arr)
-  }, [lines])
-
-  const copyToClipboard = () => {
-    const el = document.createElement("textarea")
-    const str = linesArr.join("\r\n")
-    el.value = str
-    document.body.appendChild(el)
-    el.select()
-    document.execCommand("copy")
-    document.body.removeChild(el)
-  }
-
-  return (
-    <Container>
-      <Header>
-        <PStyled>lines:</PStyled>
-        <Input
-          placeholder={0}
-          type="text"
-          onChange={handleInputChange}
-          defaultValue={lines}
-        />
-        <StyledBtn onClick={copyToClipboard}>Copy</StyledBtn>
-      </Header>
-      {linesArr.map((l, i) => {
-        return (
-          <Line
-            key={i}
-            index={i}
-            lineNumber={i + 1}
-            setLinesArr={setLinesArr}
-            linesArr={linesArr}
-          />
-        )
-      })}
-    </Container>
-  )
 }
-
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: #efe5db;
+  height: 100%;
+  min-height: 100vh;
+  width: 100vw;
 `
-
-const PStyled = styled.p`
+const ArticleTitle = styled.h1`
+  width: 20%;
+  margin: 0;
+  padding-top: 20px;
+  padding-left: 10px;
+  font-size: 30px;
+  color: #ff5c00;
+  text-transform: uppercase;
+  line-height: 42px;
   font-family: Major Mono;
-  margin-right: 30px;
 `
-const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 60px;
-  margin-top: 100px;
-`
-const Input = styled.input`
-  width: 60px;
-  height: 30px;
-  border: 1px solid coral;
-  text-align: center;
-  font-family: Major Mono;
-  outline: none;
-`
-
-const StyledBtn = styled.button`
-  background: coral;
-  color: white;
-  border: 1px solid coral;
-  margin-left: 20px;
-  height: 30px;
-  font-family: Major Mono;
-  font-size: 14px;
-  cursor: pointer;
-  outline: none;
-  border-radius: 2px;
-  right: 100px;
-`
-
-export default IndexPage
