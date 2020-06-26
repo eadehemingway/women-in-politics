@@ -210,7 +210,13 @@ export class ArtOneMatrix extends React.Component {
 
     return (
       <Container id="viz-div">
-        <PositionedSvg id="leaders-people" />
+        <div>
+          <PStyled>
+            Countries and female representation in the highest position of
+            executive power.
+          </PStyled>
+          <PositionedSvg id="leaders-people" />
+        </div>
         <PositionedInfoBox>
           {info.country && (
             <div>
@@ -252,14 +258,11 @@ const Container = styled.div`
   position: relative;
   padding-top: 140px;
   height: 400px;
+  padding-left: 150px;
+  display: flex;
 `
-const PositionedSvg = styled.svg`
-  position: absolute;
-  left: 100px;
-`
+const PositionedSvg = styled.svg``
 const PositionedInfoBox = styled.div`
-  position: absolute;
-  left: 1140px;
   border: 1px solid rgba(255, 127, 80, 0.4);
   min-height: 190px;
   width: 200px;
