@@ -25,8 +25,8 @@ const Container = styled.div`
 const ArticleTitle = styled.h1`
   width: 20%;
   margin: 0;
-  padding-top: 20px;
-  padding-left: 10px;
+  padding-top: 50px;
+  padding-left: 60px;
   font-size: 30px;
   color: #ff5c00;
   text-transform: uppercase;

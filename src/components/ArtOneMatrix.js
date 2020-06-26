@@ -250,16 +250,16 @@ const PStyledSienna = styled.p`
 `
 const Container = styled.div`
   position: relative;
-  padding-top: 60px;
+  padding-top: 140px;
   height: 400px;
 `
 const PositionedSvg = styled.svg`
   position: absolute;
-  left: 150px;
+  left: 100px;
 `
 const PositionedInfoBox = styled.div`
   position: absolute;
-  left: 1180px;
+  left: 1140px;
   border: 1px solid rgba(255, 127, 80, 0.4);
   min-height: 190px;
   width: 200px;
