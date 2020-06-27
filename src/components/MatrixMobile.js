@@ -24,7 +24,7 @@ export class MatrixMobile extends React.Component {
     infoClicked: false,
   }
   componentDidMount() {
-    d3.select("svg").attr("width", 300).attr("height", 800)
+    d3.select("svg").attr("width", 300).attr("height", 600)
 
     const scoreObj = function (o) {
       let score = 0

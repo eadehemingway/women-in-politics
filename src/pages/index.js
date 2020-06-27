@@ -7,19 +7,20 @@ import styled from "styled-components"
 import { MatrixMobile } from "../components/MatrixMobile"
 
 export default function ArticleOne() {
-  const [isDesktop, setIsDesktop] = useState(true)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
     const isDesktop = window.innerWidth > 500
+    console.log("innerWidth:", window.innerWidth)
     setIsDesktop(isDesktop)
   }, [])
-
+  console.log(isDesktop)
   return (
     <Container>
       <ArticleTitle>Female Political Represtentation Worldwide</ArticleTitle>
       {isDesktop ? <MatrixDesktop /> : <MatrixMobile />}
 
-      {/* <ArtOneMap /> */}
+      <ArtOneMap isDesktop={isDesktop} />
     </Container>
   )
 }
@@ -28,6 +29,7 @@ const Container = styled.div`
   height: 100%;
   min-height: 100vh;
   width: 100vw;
+  overflow: hidden;
 `
 const ArticleTitle = styled.h1`
   width: 20%;

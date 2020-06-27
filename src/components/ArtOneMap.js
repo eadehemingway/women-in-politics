@@ -9,10 +9,14 @@ export class ArtOneMap extends React.Component {
   projection = null
 
   componentDidMount() {
+    const { isDesktop } = this.props
+    const scale = isDesktop ? 1500 / Math.PI / 2 : 400 / Math.PI / 2
+    const translate = isDesktop ? [780, 500] : [120, 0]
+
     const projection = d3
       .geoMercator()
-      .scale(1500 / Math.PI / 2) // 960 pixels over 2 π radians
-      .translate([780, 500])
+      .scale(scale) // 960 pixels over 2 π radians
+      .translate(translate)
     const path = d3.geoPath(projection)
 
     const svg = d3
