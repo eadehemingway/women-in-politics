@@ -242,6 +242,7 @@ const CountryName = styled.p`
   font-size: 16px;
   margin-top: 0;
   font-family: Major Mono;
+  color: grey;
 `
 
 const PStyled = styled.p`
@@ -256,7 +257,7 @@ const PStyledSienna = styled.p`
 `
 const Container = styled.div`
   position: relative;
-  padding-top: 140px;
+  padding-top: 80px;
   height: 400px;
   padding-left: 150px;
 `
