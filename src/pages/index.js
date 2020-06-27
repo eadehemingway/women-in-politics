@@ -1,20 +1,26 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
-import { ArtOneMatrix } from "../components/ArtOneMatrix"
+import { MatrixDesktop } from "../components/MatrixDesktop"
 import { ArtOneMap } from "../components/ArtOneMap"
 import "../index.css"
 import styled from "styled-components"
+import { MatrixMobile } from "../components/MatrixMobile"
 
-export default class ArticleOne extends React.Component {
-  render() {
-    return (
-      <Container>
-        <ArticleTitle>Female Political Represtentation Worldwide</ArticleTitle>
-        <ArtOneMatrix />
-        <ArtOneMap />
-      </Container>
-    )
-  }
+export default function ArticleOne() {
+  const [isDesktop, setIsDesktop] = useState(true)
+
+  useEffect(() => {
+    const isDesktop = window.innerWidth > 500
+    setIsDesktop(isDesktop)
+  }, [])
+
+  return (
+    <Container>
+      <ArticleTitle>Female Political Represtentation Worldwide</ArticleTitle>
+      {isDesktop ? <MatrixDesktop /> : <MatrixMobile />}
+      {/* <ArtOneMap /> */}
+    </Container>
+  )
 }
 const Container = styled.div`
   background: #efe5db;
@@ -32,4 +38,10 @@ const ArticleTitle = styled.h1`
   text-transform: uppercase;
   line-height: 42px;
   font-family: Major Mono;
+
+  @media (max-width: 500px) {
+    font-size: 20px;
+    padding-left: 20px;
+    line-height: 32px;
+  }
 `
