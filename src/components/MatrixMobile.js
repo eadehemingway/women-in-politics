@@ -53,13 +53,7 @@ export class MatrixMobile extends React.Component {
       .enter()
       .append("g")
       .attr("class", d => `person-group-${d.countryCode}`)
-      .on("mouseover", d => {
-        d3.select(`.person-group-${d.countryCode}`).style("cursor", "pointer")
-        if (!this.state.infoClicked) {
-          this.setState({ info: d })
-        }
-      })
-      .on("click", d => {
+      .on("touchstart", d => {
         d3.selectAll(`.person-${d.countryCode}`).attr("fill", "sienna")
 
         this.setState(prevState => {

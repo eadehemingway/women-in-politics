@@ -11,10 +11,9 @@ export default function ArticleOne() {
 
   useEffect(() => {
     const isDesktop = window.innerWidth > 500
-    console.log("innerWidth:", window.innerWidth)
     setIsDesktop(isDesktop)
   }, [])
-  console.log(isDesktop)
+
   return (
     <Container>
       <ArticleTitle>Female Political Represtentation Worldwide</ArticleTitle>
