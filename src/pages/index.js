@@ -18,6 +18,7 @@ export default function ArticleOne() {
     <Container>
       <ArticleTitle>Female Political Represtentation Worldwide</ArticleTitle>
       {isDesktop ? <MatrixDesktop /> : <MatrixMobile />}
+
       {/* <ArtOneMap /> */}
     </Container>
   )

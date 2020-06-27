@@ -197,8 +197,8 @@ export class MatrixMobile extends React.Component {
           Female representation in the highest position of executive power in un
           member states.
         </PStyled>
+
         <Flex>
-          <svg id="leaders-people" />
           <PositionedInfoBox>
             {info.country && (
               <div>
@@ -215,6 +215,7 @@ export class MatrixMobile extends React.Component {
               </div>
             )}
           </PositionedInfoBox>
+          <svg id="leaders-people" />
         </Flex>
       </Container>
     )
@@ -246,8 +247,8 @@ const Container = styled.div`
 
 const PositionedInfoBox = styled.div`
   border: 1px solid rgba(255, 127, 80, 0.4);
-  min-height: 190px;
-  width: 200px;
+  margin: 20px 10px;
+  width: 90%;
   padding: 20px;
   box-sizing: border-box;
   height: fit-content;
