@@ -12,7 +12,7 @@ export default function ArticleOne() {
   useEffect(() => {
     const isDesktop = window.innerWidth > 500
     setIsDesktop(isDesktop)
-  }, [window])
+  }, [])
 
   return (
     <Container>
