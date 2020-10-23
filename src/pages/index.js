@@ -7,12 +7,12 @@ import styled from "styled-components"
 import { MatrixMobile } from "../components/MatrixMobile"
 
 export default function ArticleOne() {
-  const [isDesktop, setIsDesktop] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(undefined)
 
   useEffect(() => {
     const isDesktop = window.innerWidth > 500
     setIsDesktop(isDesktop)
-  }, [])
+  }, [window])
 
   return (
     <Container>

@@ -1,16 +1,19 @@
-import React from "react"
+import React, { useEffect } from "react"
 import * as d3 from "d3"
 import { hogs } from "../data/hogObj.js"
 import { worldGeoJson } from "./../assets/worldgeojson"
 import styled from "styled-components"
-export class ArtOneMap extends React.Component {
-  svgWidth = 1300
-  svgHeight = 900
-  projection = null
 
-  componentDidMount() {
-    const { isDesktop } = this.props
+export function ArtOneMap({ isDesktop }) {
+  const svgWidth = 1300
+  const svgHeight = 900
+  const projection = null
+
+  useEffect(() => {
+    if (isDesktop === undefined) return
     const scale = isDesktop ? 1500 / Math.PI / 2 : 400 / Math.PI / 2
+    console.log("isDesktop:", isDesktop)
+
     const translate = isDesktop ? [780, 500] : [120, 0]
 
     const projection = d3
@@ -21,8 +24,8 @@ export class ArtOneMap extends React.Component {
 
     const svg = d3
       .select("#map-svg")
-      .attr("width", this.svgWidth)
-      .attr("height", this.svgHeight)
+      .attr("width", svgWidth)
+      .attr("height", svgHeight)
 
     worldGeoJson.features.forEach((country, countryIndex) => {
       hogs.forEach(hog => {
@@ -43,7 +46,7 @@ export class ArtOneMap extends React.Component {
     countryGroups
       .append("path")
       .attr("d", path)
-      .attr("fill", d => this.getColor(d))
+      .attr("fill", d => getColor(d))
       .attr("stroke", "lightsteelblue")
       .attr("stroke-width", 1)
       .attr("transform", `scale(0.8) translate(60, 220)`)
@@ -92,9 +95,9 @@ export class ArtOneMap extends React.Component {
       .append("text")
       .attr("class", "years-text")
       .attr("font-family", "Major Mono")
-  }
+  }, [isDesktop])
 
-  getColor = d => {
+  function getColor(d) {
     const { info } = d.properties
     if (!info) {
       return "grey"
@@ -109,13 +112,12 @@ export class ArtOneMap extends React.Component {
     if (years < 15) return "#ff7c4d"
     if (years >= 15) return "#ff571a"
   }
-  render() {
-    return (
-      <MapWrapper>
-        <svg id="map-svg" />
-      </MapWrapper>
-    )
-  }
+
+  return (
+    <MapWrapper>
+      <svg id="map-svg" />
+    </MapWrapper>
+  )
 }
 
 const MapWrapper = styled.div``
